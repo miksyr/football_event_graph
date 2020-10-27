@@ -4,6 +4,7 @@ class BaseNodeId:
 
         COUNTRY = 'C'
         LEAGUE = 'L'
+        EVENT_CONTEXT = 'EC'
         MATCH = 'M'
         MATCH_EVENT = 'MEV'
         PLAYER = 'P'
@@ -16,13 +17,19 @@ class BaseNodeId:
         self.ids = args
 
     def __str__(self):
-        return f'{self.letter}_{"_".join([str(value) for value in self.ids])}'
+        return f'{self.letter}{"_".join([str(value) for value in self.ids])}'
 
 
 class CountryId(BaseNodeId):
 
     def __init__(self, countryId):
         super().__init__(BaseNodeId.Letters.COUNTRY, countryId)
+
+
+class EventContextId(BaseNodeId):
+
+    def __init__(self, eventType, eventId):
+        super().__init__(BaseNodeId.Letters.EVENT_CONTEXT, eventType, eventId)
 
 
 class LeagueId(BaseNodeId):

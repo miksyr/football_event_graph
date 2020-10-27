@@ -1,0 +1,24 @@
+
+# TODO: turn into standardized handler
+
+idToPitchLocationMap = {
+    1: 'ATTACKING_HALF',
+    2: 'DEFENSIVE_HALF',
+    3: 'CENTER_OF_BOX',
+    4: 'LEFT_WING',
+    5: 'RIGHT_WING',
+    6: 'DIFFICULT_ANGLE_AND_LONG_RANGE',
+    7: 'DIFFICULT_ANGLE_ON_LEFT',
+    8: 'DIFFICULT_ANGLE_ON_RIGHT',
+    9: 'LEFT_SIDE_OF_BOX',
+    10: 'LEFT_SIDE_OF_SIX_YARD_BOX',
+    11: 'RIGHT_SIDE_OF_BOX',
+    12: 'RIGHT_SIDE_OF_SIX_YARD_BOX',
+    13: 'VERY_CLOSE_RANGE',
+    14: 'PENALTY_SPOT',
+    15: 'OUTSIDE_bOX',
+    16: 'LONG_RANGE',
+    17: 'MORE_THAN_35_YARDS',
+    18: 'MORE_THAN_40_YARDS',
+    19: 'NOT_RECORDED'
+}

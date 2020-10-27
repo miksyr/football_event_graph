@@ -2,15 +2,15 @@ import csv
 import gzip
 import os
 
-from datamodel.fields_and_labels import Relation
+from datamodel.relations import Relation
 from store.graph_output_handlers.output_handler_base import RelationOutputHandlerBase
 
 
-class RelationFile(RelationOutputHandlerBase):
+class RelationsFile(RelationOutputHandlerBase):
 
     def __init__(self, fileName):
         self.fileName = fileName
-        open(f'{os.path.dirname(self.fileName)}/relations.csv').write(','.join(Relation.ALL))
+        open(f'{os.path.dirname(self.fileName)}/relations.csv', 'w').write(','.join(Relation.ALL))
         self.file = gzip.open(self.fileName, 'wt')
         self.csv = csv.DictWriter(self.file, fieldnames=Relation.ALL, escapechar='\\', quotechar='"', quoting=csv.QUOTE_ALL)
 
