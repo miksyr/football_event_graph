@@ -16,7 +16,7 @@ idToPitchLocationMap = {
     12: 'RIGHT_SIDE_OF_SIX_YARD_BOX',
     13: 'VERY_CLOSE_RANGE',
     14: 'PENALTY_SPOT',
-    15: 'OUTSIDE_bOX',
+    15: 'OUTSIDE_BOX',
     16: 'LONG_RANGE',
     17: 'MORE_THAN_35_YARDS',
     18: 'MORE_THAN_40_YARDS',
