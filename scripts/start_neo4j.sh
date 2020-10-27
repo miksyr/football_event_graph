@@ -5,7 +5,7 @@
 
 if [ -z ${NEO4J_FOLDER} ]
 then
-  echo "Please set environment variable NEO4J_FOLDER (the path containing bin, data, import, etc"
+  echo "Please set environment variable NEO4J_FOLDER (the path containing bin, data, import, etc)"
   exit 1;
 fi
 
