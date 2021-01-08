@@ -11,7 +11,7 @@ TODO: description of graph connectivity
 ## How to use
 * install Neo4j 4.1.3 (https://neo4j.com/docs/operations-manual/current/installation/)
 * install requirements.txt
-* `cd football_event_graph.scripts`
+* `cd football_event_graph/scripts`
 * `python process_files_for_neo4j_import.py <matchMetadataFilepath> <matchEventsFilepath> <processedFileSaveDir>`
 * `./build_new_database.sh <processedFileSaveDir>`
 * `./start_neo4j.sh` (requires Docker)
