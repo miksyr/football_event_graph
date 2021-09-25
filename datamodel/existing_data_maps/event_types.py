@@ -18,5 +18,5 @@ idToEventTypeMap = {
     12: NodeLabel.KEY_PASS,
     13: NodeLabel.FAILED_THROUGH_BALL,
     14: NodeLabel.SENDING_OFF,
-    15: NodeLabel.OWN_GOAL
+    15: NodeLabel.OWN_GOAL,
 }
