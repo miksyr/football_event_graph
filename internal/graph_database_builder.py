@@ -1,6 +1,7 @@
 from typing import Dict, Iterable
 
 import pandas as pd
+import math
 from tqdm.auto import tqdm
 
 from datamodel.existing_data_maps.assist_method_map import idToAssistMethodMap
@@ -75,24 +76,24 @@ class GraphDatabaseBuilder:
         allMonths = {(d[0], d[1]) for d in splitDates}
         for year in allYears:
             self.nodeOutputHandler.add(
-                nodeId=YearId(year=year), nodeLabels=[NodeLabel.YEAR], nodeProperties={}
+                nodeId=YearId(year=year), nodeLabels=[NodeLabel.YEAR], nodeProperties={NodeField.TEXT: f"{year}"}
             )
         for year, month in allMonths:
             self.nodeOutputHandler.add(
                 nodeId=MonthId(year=year, month=month),
                 nodeLabels=[NodeLabel.MONTH],
-                nodeProperties={},
+                nodeProperties={NodeField.TEXT: f"{year}-{month}"},
             )
+            self.relationsOutputHandler.add(
+                    startNodeId=MonthId(year=year, month=month),
+                    endNodeId=YearId(year=year),
+                    relationType=GeneralRelationType.IN_YEAR,
+                )
         for year, month, day in splitDates:
             self.nodeOutputHandler.add(
                 nodeId=DateId(year=year, month=month, day=day),
                 nodeLabels=[NodeLabel.DATE],
                 nodeProperties={NodeField.TEXT: f"{year}-{month}-{day}"},
-            )
-            self.relationsOutputHandler.add(
-                startNodeId=MonthId(year=year, month=month),
-                endNodeId=YearId(year=year),
-                relationType=GeneralRelationType.IN_YEAR,
             )
             self.relationsOutputHandler.add(
                 startNodeId=DateId(year=year, month=month, day=day),
@@ -311,7 +312,7 @@ class GraphDatabaseBuilder:
                     relationType=EventRelationType.PLAYER_2,
                 )
 
-            if row["shot_place"] is not None:
+            if (row["shot_place"] is not None) and not(math.isnan(row["shot_place"])):
                 shotPlacementId = int(row["shot_place"])
                 self.relationsOutputHandler.add(
                     startNodeId=matchEventId,
@@ -322,7 +323,7 @@ class GraphDatabaseBuilder:
                     relationType=EventRelationType.SHOT_PLACEMENT,
                 )
 
-            if row["shot_outcome"] is not None:
+            if (row["shot_outcome"] is not None) and not(math.isnan(row["shot_outcome"])):
                 shotOutcomeId = int(row["shot_outcome"])
                 self.relationsOutputHandler.add(
                     startNodeId=matchEventId,
@@ -333,7 +334,7 @@ class GraphDatabaseBuilder:
                     relationType=EventRelationType.SHOT_OUTCOME,
                 )
 
-            if row["location"] is not None:
+            if (row["location"] is not None) and not(math.isnan(row["location"])):
                 pitchLocationId = int(row["location"])
                 self.relationsOutputHandler.add(
                     startNodeId=matchEventId,
@@ -344,7 +345,7 @@ class GraphDatabaseBuilder:
                     relationType=EventRelationType.PITCH_LOCATION,
                 )
 
-            if row["bodypart"] is not None:
+            if (row["bodypart"] is not None) and not(math.isnan(row["bodypart"])):
                 bodyPartId = int(row["bodypart"])
                 self.relationsOutputHandler.add(
                     startNodeId=matchEventId,
@@ -365,7 +366,7 @@ class GraphDatabaseBuilder:
                     relationType=EventRelationType.ASSIST_METHOD,
                 )
 
-            if row["situation"] is not None:
+            if (row["situation"] is not None) and not(math.isnan(row["situation"])):
                 eventSituationId = int(row["situation"])
                 self.relationsOutputHandler.add(
                     startNodeId=matchEventId,
